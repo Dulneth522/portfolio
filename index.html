@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulneth Ranaweera - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-top: 60px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4d4d, #4dff4d, #ffff4d);
+            border-radius: 2px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #64b5f6;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #121212;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        .nav-links li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 100px;
+        }
+
+        .profile-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            border-top-color: #ff4d4d;
+            border-right-color: #4dff4d;
+            border-bottom-color: #ffff4d;
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #64b5f6;
+            z-index: 1;
+        }
+
+        .profile-details {
+            flex: 1;
+            padding-left: 50px;
+        }
+
+        .profile-details h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff4d4d, #4dff4d, #ffff4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .profile-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #64b5f6;
+        }
+
+        .profile-details p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
+
+        #skills {
+            margin-top: 50px;
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .skills-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .skills-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .skills-list {
+            flex: 1;
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .skill-percent {
+            color: #64b5f6;
+        }
+
+        /* Add the shimmer animation effect */
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            animation: shimmer 2s infinite;
+            border-radius: 5px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+
+.progress-bar {
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ff4d4d, #ffff4d);
+    transition: width 1s ease-in-out;
+    position: relative;
+}
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #64b5f6;
+        }
+
+        .project-info p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #64b5f6;
+            color: #121212;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-btn:hover {
+            background-color: #42a5f5;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #64b5f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #42a5f5;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #64b5f6;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #64b5f6;
+            color: #121212;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1e1e1e;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+
+            .hero,
+            .skills-container {
+                flex-direction: column;
+            }
+
+            .profile-details {
+                padding-left: 0;
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .skills-list {
+                margin-top: 40px;
+            }
+
+            .profile-image::before {
+                width: 280px;
+                height: 280px;
+            }
+
+            .profile-image img {
+                width: 260px;
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 5px 15px;
+            }
+
+            .profile-details h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+                /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1e1e1e;
+            margin-top: 50px;
+        }
+
+
+        @media (max-width: 576px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-details {
+                padding: 0;
+            }
+
+            .profile-image::before {
+                width: 220px;
+                height: 220px;
+            }
+
+            .profile-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-details h1 {
+                font-size: 2rem;
+            }
+
+            .profile-details h3 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.9rem;
+                white-space: pre-wrap;
+            }
+
+            .skills-container {
+                flex-direction: column;
+            }
+
+            .skills-list,
+            .skills-image {
+                width: 100%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-info p {
+                font-size: 0.95rem;
+            }
+
+            .contact-info p {
+                font-size: 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero container">
+        <div class="profile-image">
+            <img src="./images/myphoto2.jpeg" alt="Dulneth Ranaweera">
+        </div>
+        <div class="profile-details">
+            <div class="full-name">
+                <h3>Hi, I'm </h3>
+                <h1>Dulneth Ranaweera</h1>
+            </div>
+            <h3>Computer Science Student & AI Enthusiast</h3>
+            <pre>I'm a passionate computer science student at the University of Sri Jayewardenepura,
+specializing in artificial intelligence.I have fun writing code to resolve difficult problems 
+and design innovative solutions.Constructing my very first website and designing 
+machine learning models have been thrilling moments in my tech journey.
+To keep myself abreast of technological advancements, 
+I continuously learn and enhance my skills.</pre>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skills-list">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-percent">45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Java</span>
+                        <span class="skill-percent">20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 20%"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="skills-image">
+                <img src="./images/code.png" alt="Coding Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./images/qr-code.png" alt="qr-code">
+                </div>
+                <div class="project-info">
+                    <h3>Qr- code</h3>
+                    <p>A web application that generates QR codes for URLs and text, allowing users to easily create and
+                        share QR codes.</p>
+                    <a href="https://github.com/Dulneth522/qr-code.git" class="project-btn" target="_blank">View on
+                        GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./images/e-commerce.png"
+                        alt="Web Project">
+                </div>
+                <div class="project-info">
+                    <h3>E-Commerce Website</h3>
+                    <p>A full-stack e-commerce platform with user authentication, product catalog, shopping cart, and
+                        payment integration.</p>
+                    <a href="https://github.com/Dulneth522" class="project-btn" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./images/data visual.png"
+                        alt="Data Project">
+                </div>
+                <div class="project-info">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>An interactive dashboard that visualizes complex datasets using D3.js with filtering and
+                        real-time updates.</p>
+                    <a href="https://github.com/Dulneth522" class="project-btn" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:dulneth204rashmikad@gmail.com">dulneth204rashmikad@gmail.com</a></p>
+            <p>LinkedIn: <a
+                    href="https://www.linkedin.com/in/rashmika-dulneth-382734306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank">linkedin.com/in/rashmika-dulneth-382734306</a></p>
+        </div>
+        <div class="social-links">
+            <a href="https://web.facebook.com/dulneth.ranaweera.2025/" target="_blank" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://github.com/Dulneth522" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.youtube.com/@Rashmikadulneth" target="_blank" class="social-icon">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rashmika-dulneth-382734306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Dulneth Ranaweera. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js">
+
+    </script>
+</body>
+
+</html>
