@@ -535,21 +535,70 @@
             }
         }
 
+        .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #121212;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #64b5f6;
+        margin-top: 10px;
+        padding: 10px 0;
+        border-radius: 5px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        color: #121212;
+        font-weight: 700;
+        font-size: 1.2rem;
+        display: block;
+        padding: 10px 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
+
     </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container container">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+ <nav>
+    <div class="nav-container container">
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
         </div>
-    </nav>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero container">
